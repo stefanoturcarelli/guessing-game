@@ -59,3 +59,36 @@ function filterArray(array, callback) {
 function create(element, parent = document) {
   return parent.createElement(element);
 }
+
+const input = select('#input');
+const output = select('#output');
+const guessQty = select('#guess-qty');
+const resetBtn = select('#reset-button');
+const guessBtn = select('#guess-button');
+let count = 5;
+// let randomNum;
+
+function compareNumbers(number) {
+  const inputNum = number.trim();
+  print(inputNum);
+  // print(randomNum);
+  if ((inputNum = !NaN && inputNum > ????)) {
+    output.innerText = `My number is smaller`;
+  } else if ((inputNum = !NaN && inputNum < ?????)) {
+    output.innerText = `My number is bigger`;
+  } else if (inputNum > 10) {
+    output.innerText = `Please enter a number between 1 and 10`;
+  }
+  count--;
+}
+
+onEvent('load', window, () => {
+  randomNum = randomNumber(1, 10);
+  print(randomNum);
+});
+
+onEvent('click', guessBtn, () => {
+  compareNumbers(input.value);
+});
+
+print(input.value);

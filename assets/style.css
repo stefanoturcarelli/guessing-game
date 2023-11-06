@@ -139,13 +139,21 @@ input[type='text'] {
   text-align: center;
 }
 
-button {
+#reset-button {
   padding: 1rem;
+	width: 10rem;
+	width: 10rem;
   border-radius: 5rem;
   position: fixed;
   top: 0;
   right: 0;
   margin: 1rem 1rem 0 0;
+}
+
+#guess-button {
+	padding: 1rem;
+	width: 10rem;
+	border-radius: 5rem;
 }
 
 h2 {
