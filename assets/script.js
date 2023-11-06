@@ -78,7 +78,6 @@ let randomNum = randomNumber(1, 10);
 
 function validateInput(number) {
   const inputNum = parseInt(number.trim());
-
   if (isNaN(inputNum)) {
     return (output.innerText = `Please enter a number`);
   }
@@ -105,6 +104,15 @@ function getHint(number) {
   }
 }
 
+function resetGame() {
+  input.value = '';
+  guessBtn.style.display = 'block';
+  output.innerText = `Please enter a number between 1 and 10`;
+  count = 5;
+  guessQty.innerText = `${count}`;
+  resetBtn.style.display = 'none';
+}
+
 onEvent('load', window, () => {
   resetBtn.style.display = 'none';
   output.style.display = 'none';
@@ -125,11 +133,5 @@ onEvent('click', guessBtn, () => {
 });
 
 onEvent('click', resetBtn, () => {
-  input.value = '';
-  guessBtn.style.display = 'block';
-  output.innerText = `Please enter a number between 1 and 10`;
-  count = 5;
-  guessQty.innerText = `${count}`;
-  resetBtn.style.display = 'none';
-  // print(`Count: ${count}`);
+  resetGame();
 });
