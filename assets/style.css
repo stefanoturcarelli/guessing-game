@@ -127,6 +127,7 @@ body {
   height: 100dvh;
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 input[type='text'] {
@@ -141,8 +142,8 @@ input[type='text'] {
 
 #reset-button {
   padding: 1rem;
-	width: 10rem;
-	width: 10rem;
+  width: 10rem;
+  width: 10rem;
   border-radius: 5rem;
   position: fixed;
   top: 0;
@@ -151,9 +152,9 @@ input[type='text'] {
 }
 
 #guess-button {
-	padding: 1rem;
-	width: 10rem;
-	border-radius: 5rem;
+  padding: 1rem;
+  width: 10rem;
+  border-radius: 5rem;
 }
 
 h2 {
@@ -161,10 +162,22 @@ h2 {
   font-weight: 700;
 }
 
-p {
+#output {
   background-color: #ed4f9ed2;
   color: #fff;
   font-weight: 600;
   padding: 1rem 3rem;
   border-radius: 0.4rem;
+}
+
+.instructions {
+  color: #fff;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.instructions h1 {
+  line-height: 1;
 }

@@ -70,6 +70,7 @@ const output = select('#output');
 const guessQty = select('#guess-qty');
 const resetBtn = select('#reset-button');
 const guessBtn = select('#guess-button');
+const instructions = select('.instructions');
 let count = 5;
 let randomNum = randomNumber(1, 10);
 
@@ -77,10 +78,9 @@ let randomNum = randomNumber(1, 10);
 
 function validateInput(number) {
   const inputNum = parseInt(number.trim());
-  // print(inputNum);
-  // print(typeof inputNum);
+
   if (isNaN(inputNum)) {
-    output.innerText = `Please enter a number between 1 and 10`;
+    return (output.innerText = `Please enter a number`);
   }
   return inputNum;
 }
@@ -89,21 +89,24 @@ function getHint(number) {
   const inputNum = parseInt(number.trim());
   if (count > 1) {
     if (inputNum > randomNum) {
-      output.innerText = `My number is smaller`;
+      output.innerText = `Try a lower number`;
     } else if (inputNum < randomNum) {
-      output.innerText = `My number is bigger`;
+      output.innerText = `Try a higher number`;
     } else if (inputNum > 10) {
       output.innerText = `Please enter a number between 1 and 10`;
     } else if (inputNum === randomNum) {
       output.innerText = `Correct! The secret number was: ${randomNum}`;
+      resetBtn.style.display = 'block';
     }
   } else {
-    output.innerText = `Game Over`;
+    output.innerText = `Out of attempts! The secret number was ${randomNum}`;
     guessBtn.style.display = 'none';
+    resetBtn.style.display = 'block';
   }
 }
 
 onEvent('load', window, () => {
+  resetBtn.style.display = 'none';
   output.innerText = `Please enter a number between 1 and 10`;
   input.value = '';
   guessQty.innerText = `${count}`;
@@ -111,6 +114,7 @@ onEvent('load', window, () => {
 });
 
 onEvent('click', guessBtn, () => {
+  instructions.style.display = 'none';
   let guessNumber = input.value;
   validateInput(guessNumber);
   getHint(guessNumber);
@@ -124,5 +128,6 @@ onEvent('click', resetBtn, () => {
   guessBtn.style.display = 'block';
   count = 5;
   guessQty.innerText = `${count}`;
+  resetBtn.style.display = 'none';
   // print(`Count: ${count}`);
 });
