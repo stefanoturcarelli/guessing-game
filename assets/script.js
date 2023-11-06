@@ -18,6 +18,11 @@ function onEvent(event, selector, callback) {
   return selector.addEventListener(event, callback);
 }
 
+// Remove event Listener
+function removeEvent(event, selector, callback) {
+  return selector.removeEventListener(event, callback);
+}
+
 // Get HTML element by id
 function getElement(selector, parent = document) {
   return parent.getElementById(selector);
@@ -66,29 +71,58 @@ const guessQty = select('#guess-qty');
 const resetBtn = select('#reset-button');
 const guessBtn = select('#guess-button');
 let count = 5;
-// let randomNum;
+let randomNum = randomNumber(1, 10);
 
-function compareNumbers(number) {
-  const inputNum = number.trim();
+print(`Random Number: ${randomNum}`);
+
+function validateInput(number) {
+  const inputNum = parseInt(number.trim());
   print(inputNum);
-  // print(randomNum);
-  if ((inputNum = !NaN && inputNum > ????)) {
-    output.innerText = `My number is smaller`;
-  } else if ((inputNum = !NaN && inputNum < ?????)) {
-    output.innerText = `My number is bigger`;
-  } else if (inputNum > 10) {
+  print(typeof inputNum);
+  if (isNaN(inputNum)) {
     output.innerText = `Please enter a number between 1 and 10`;
   }
-  count--;
+  return inputNum;
+}
+
+function getHint(number) {
+  const inputNum = parseInt(number.trim());
+  if (count > 1) {
+    if (inputNum > randomNum) {
+      output.innerText = `My number is smaller`;
+    } else if (inputNum < randomNum) {
+      output.innerText = `My number is bigger`;
+    } else if (inputNum > 10) {
+      output.innerText = `Please enter a number between 1 and 10`;
+    } else if (inputNum === randomNum) {
+      output.innerText = `Correct! The secret number was: ${randomNum}`;
+    }
+  } else {
+    output.innerText = `Game Over`;
+    guessBtn.style.display = 'none';
+  }
 }
 
 onEvent('load', window, () => {
-  randomNum = randomNumber(1, 10);
-  print(randomNum);
+  output.innerText = `Please enter a number between 1 and 10`;
+  input.value = '';
+  guessQty.innerText = `${count}`;
+  print(`Count: ${count}`);
 });
 
 onEvent('click', guessBtn, () => {
-  compareNumbers(input.value);
+  let guessNumber = input.value;
+  validateInput(guessNumber);
+  getHint(guessNumber);
+  count--;
+  guessQty.innerText = `${count}`;
+  print(`Count: ${count}`);
 });
 
-print(input.value);
+onEvent('click', resetBtn, () => {
+  input.value = '';
+  guessBtn.style.display = 'block';
+  count = 5;
+  guessQty.innerText = `${count}`;
+  print(`Count: ${count}`);
+});
