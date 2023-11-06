@@ -104,10 +104,59 @@ a {
   }
 }
 
+/* ! Main Styles */
+
 .container {
   max-width: 1200px;
   width: min(100% - 30px, 1080px);
   margin-inline: auto;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+body {
+  background-color: #45bff4;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+}
+
+input[type='text'] {
+  color: #ed4f9ed2;
+  padding: 1rem;
+  border-radius: 50%;
+  width: 20rem;
+  height: 20rem;
+  font-size: 10rem;
+  text-align: center;
+}
+
+button {
+  padding: 1rem;
+  border-radius: 5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 1rem 1rem 0 0;
+}
+
+h2 {
+  color: #fff;
+  font-weight: 700;
+}
+
+p {
+  background-color: #ed4f9ed2;
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border-radius: 0.4rem;
 }
