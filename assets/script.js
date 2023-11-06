@@ -105,6 +105,7 @@ function getHint(number) {
 }
 
 function resetGame() {
+  randomNum = randomNumber(1, 10);
   input.value = '';
   guessBtn.style.display = 'block';
   output.innerText = `Please enter a number between 1 and 10`;
