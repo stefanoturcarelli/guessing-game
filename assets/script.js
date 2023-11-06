@@ -73,12 +73,12 @@ const guessBtn = select('#guess-button');
 let count = 5;
 let randomNum = randomNumber(1, 10);
 
-print(`Random Number: ${randomNum}`);
+// print(`Random Number: ${randomNum}`);
 
 function validateInput(number) {
   const inputNum = parseInt(number.trim());
-  print(inputNum);
-  print(typeof inputNum);
+  // print(inputNum);
+  // print(typeof inputNum);
   if (isNaN(inputNum)) {
     output.innerText = `Please enter a number between 1 and 10`;
   }
@@ -107,7 +107,7 @@ onEvent('load', window, () => {
   output.innerText = `Please enter a number between 1 and 10`;
   input.value = '';
   guessQty.innerText = `${count}`;
-  print(`Count: ${count}`);
+  // print(`Count: ${count}`);
 });
 
 onEvent('click', guessBtn, () => {
@@ -116,7 +116,7 @@ onEvent('click', guessBtn, () => {
   getHint(guessNumber);
   count--;
   guessQty.innerText = `${count}`;
-  print(`Count: ${count}`);
+  // print(`Count: ${count}`);
 });
 
 onEvent('click', resetBtn, () => {
@@ -124,5 +124,5 @@ onEvent('click', resetBtn, () => {
   guessBtn.style.display = 'block';
   count = 5;
   guessQty.innerText = `${count}`;
-  print(`Count: ${count}`);
+  // print(`Count: ${count}`);
 });
