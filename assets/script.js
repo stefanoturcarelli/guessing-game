@@ -107,7 +107,7 @@ function getHint(number) {
 
 onEvent('load', window, () => {
   resetBtn.style.display = 'none';
-  output.innerText = `Please enter a number between 1 and 10`;
+  output.style.display = 'none';
   input.value = '';
   guessQty.innerText = `${count}`;
   // print(`Count: ${count}`);
@@ -115,6 +115,7 @@ onEvent('load', window, () => {
 
 onEvent('click', guessBtn, () => {
   instructions.style.display = 'none';
+  output.style.display = 'block';
   let guessNumber = input.value;
   validateInput(guessNumber);
   getHint(guessNumber);
@@ -126,6 +127,7 @@ onEvent('click', guessBtn, () => {
 onEvent('click', resetBtn, () => {
   input.value = '';
   guessBtn.style.display = 'block';
+  output.innerText = `Please enter a number between 1 and 10`;
   count = 5;
   guessQty.innerText = `${count}`;
   resetBtn.style.display = 'none';
