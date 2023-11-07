@@ -73,7 +73,7 @@ const guessBtn = select('#guess-button');
 const instructions = select('.instructions');
 let count = 5;
 let randomNum = randomNumber(1, 10);
-print(`Random Number: ${randomNum}`);
+// print(`Random Number: ${randomNum}`);
 
 function validateInput(number) {
   const inputNum = parseInt(number.trim());
@@ -91,11 +91,11 @@ function validateInput(number) {
 function getHint(number) {
   if (number > randomNum && count > 1) {
     count--;
-    console.log(`Count: ${count}`);
+    // console.log(`Count: ${count}`);
     output.innerText = `Try a lower number`;
   } else if (number < randomNum && count > 1) {
     count--;
-    console.log(`Count: ${count}`);
+    // console.log(`Count: ${count}`);
     output.innerText = `Try a higher number`;
   } else if (number > 10 && count > 1) {
     output.innerText = `Please enter a number lower than 10`;
@@ -107,7 +107,7 @@ function getHint(number) {
 
 function resetGame() {
   randomNum = randomNumber(1, 10);
-  print(`Random Number: ${randomNum}`);
+  // print(`Random Number: ${randomNum}`);
   input.value = '';
   guessBtn.style.display = 'block';
   output.innerText = `Please enter a number between 1 and 10`;
