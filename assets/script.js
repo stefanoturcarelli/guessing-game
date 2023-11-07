@@ -79,6 +79,10 @@ function validateInput(number) {
   const inputNum = parseInt(number.trim());
   if (isNaN(inputNum)) {
     output.innerText = `Please enter a number`;
+  } else if (inputNum > 10) {
+    output.innerText = `Please enter a number lower than 10`;
+  } else if (inputNum === 0) {
+    output.innerText = `Please enter a number higher than 0`;
   } else if (count === 1) {
     count--;
     output.innerText = `Out of attempts! The secret number was ${randomNum}`;
@@ -89,17 +93,17 @@ function validateInput(number) {
 }
 
 function getHint(number) {
-  if (number > randomNum && count > 1) {
+  if (number > randomNum && count > 1 && number !== 0) {
     count--;
     // console.log(`Count: ${count}`);
     output.innerText = `Try a lower number`;
-  } else if (number < randomNum && count > 1) {
+  } else if (number < randomNum && count > 1 && number !== 0) {
     count--;
     // console.log(`Count: ${count}`);
     output.innerText = `Try a higher number`;
-  } else if (number > 10 && count > 1) {
+  } else if (number > 10 && count > 1 && number !== 0) {
     output.innerText = `Please enter a number lower than 10`;
-  } else if (number === randomNum && count >= 0) {
+  } else if (number === randomNum && count >= 0 && number !== 0) {
     output.innerText = `Correct! The secret number was: ${randomNum}`;
     resetBtn.style.display = 'block';
   }
